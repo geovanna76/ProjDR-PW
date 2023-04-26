@@ -1,0 +1,83 @@
+/* Menu/navbar */
+.container-fluid{
+   
+    background: rgb(29,42,180);
+    background: linear-gradient(90deg, rgba(29,42,180,1) 24%, rgba(0,0,0,1) 100%);
+}
+.dropdown-item{
+    background-color: #ccc	;
+}
+.dropdown-menu{
+    background-color: #1C1C1C	;
+}
+.dropdown-item{
+    font-size: 15px;
+    font-family:  Arial, Helvetica, sans-serif;
+
+}
+.navbar-brand{
+    color: #ffffff	;
+    font-size: 23px;
+    font-family:  Arial, Helvetica, sans-serif;
+    margin: 6px;
+
+}
+.navbar-brand:hover{
+    color:#ccc;		;
+}
+.conteudo{
+    background-color: #ffffff;
+    border: 0px solid #ccc;
+    border-radius: 0px;
+    padding: 40px;
+    margin: 0 auto;
+    width: 100vw;
+    min-height: 87vh;
+    box-sizing: border-box;
+    box-shadow: 0px 10px 10px #ccc;
+    background: rgb(29,42,180);
+    background: linear-gradient(90deg, rgba(29,42,180,1) 24%, rgba(0,0,0,1) 100%);
+}
+
+
+.iconeLapis{
+    cursor:pointer;
+}
+.form-range{
+    border-radius: 15px;
+}
+.add{
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background-color:white;
+    border-radius: 5px;
+    border: none;
+    padding: 9px;
+}
+
+.add:hover{
+    background-color:#A9A9A9	 ;
+
+    
+}
+.excluirP{
+    cursor: pointer;
+}
+.pontuarP{
+    cursor: pointer;
+}
+.editarP{
+    cursor: pointer;
+}
+.listaP{
+background-color: #1C1C1C;
+}
+.linkPontos{
+   background-color: black;
+}
+.link{
+    text-decoration: none;
+    cursor: pointer;
+    
+}

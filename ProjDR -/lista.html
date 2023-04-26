@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lista</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="src/lista.css" />
+
+
+</head>
+
+<body>
+
+  <!--navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+        aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              ☰
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="login.html">• Login</a></li>
+              <li><a class="dropdown-item" href="lista.html">• Lista</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a class="navbar-brand" href="#">DR AE</a>
+      </div>
+    </div>
+  </nav>
+  <div class="conteudo">
+
+    <!--tabela da lista-->
+    <table class="table table-success table-striped">
+
+      <thead class=" table-dark">
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">DataNasc</th>
+          <th scope="col">Relacionamento</th>
+          <th scope="col">Pontos</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Exluir</th>
+
+        </tr>
+      </thead>
+      <tbody class="listaP"id="listaPessoas" >         
+        
+      </tbody>
+    </table>
+
+
+    <button type="button" id="btnSalvar" data-bs-toggle="modal" data-bs-target="#criarPessoa" data-bs-whatever="@mdo"
+      class="add">Adicionar pessoa</button>
+
+    <br><br>
+
+
+
+
+
+  </div>
+
+
+
+
+  <!-- Modal Editar -->
+  <div class="modal fade" id="editarPessoa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar pessoa</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!--form-->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nome" placeholder="name@example.com">
+          <label for="floatingInput">Nome</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="date" class="form-control" id="dtNasc" placeholder="name@example.com">
+          <label for="floatingInput">Data de nascimento</label>
+        </div>
+
+        <div class="form-floating mb-3">
+
+          <select class="form-select" aria-label="Defaut select example" id="edRelacionamento">
+            <option selected>Selecione o tipo de relacionamento</option>
+            <option value="Conjugue">Conjugue</option>
+            <option value="Companheiro(a)">Companheiro(a)</option>
+            <option value="namorado(a)">namorado(a)</option>
+            <option value="Pai">Pai</option>
+            <option value="Mãe">Mãe</option>
+            <option value="Tio(a)">Tio(a)</option>
+            <option value="Filho(a)">Filho(a)</option>
+            <option value="Amigo(a)">Amigo(a)</option>
+            <option value="Irmã(o)">Irmã(o)</option>
+            <option value="Avós">Avós</option>
+            <option value="Outros">Outros</option>
+
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" id="criarNova" class="btn btn-primary" data-bs-dismiss="modal">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Pontuar -->
+  <div class="modal fade" id="pontuarPessoa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Pontuar Pessoa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <input type="hidden" id="chavePessoa" value="">
+
+            <label for="customRange1" class="form-label">Comportamento</label>
+            <output id="amount1" for="range1" class="pontos">0</output>
+            <input type="range" class="form-range" min="-5" max="5" id="range1" oninput="amount1.value=range1.value">
+            
+            <label for="customRange2" class="form-label">Atitude</label>
+            <output id="amount2" for="range2" class="pontos">0</output>
+            <input type="range" class="form-range" min="-5" max="5" id="range2" oninput="amount2.value=range2.value">
+            
+            <label for="customRange3" class="form-label">Tom de voz</label>
+            <output id="amount3" for="range3" class="pontos">0</output>
+            <input type="range" class="form-range" min="-5" max="5" id="range3" oninput="amount3.value=range3.value">
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" id="btnSalvarPontos" class="btn btn-primary" data-bs-dismiss="modal">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--ModalExluir-->
+  <div class="modal fade" id="excluirPessoa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deseja excluir Pessoa?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Você tem certeza que deseja Remover a pessoa?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Modal Criar-->
+  <div class="modal fade" id="criarPessoa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Criar pessoa</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!--form-->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="criNome" placeholder="name@example.com">
+          <label for="floatingInput">Nome</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="date" class="form-control" id="criDtNasc" placeholder="name@example.com">
+          <label for="floatingInput">Data de nascimento</label>
+        </div>
+
+        <div class="form-floating mb-3">
+
+          <select class="form-select" aria-label="Defaut select example" id="tipoRelacionamento">
+            <option selected>Selecione o tipo de relacionamento</option>
+            <option value="Conjugue">Conjugue</option>
+            <option value="Companheiro(a)">Companheiro(a)</option>
+            <option value="namorado(a)">namorado(a)</option>
+            <option value="Pai">Pai</option>
+            <option value="Mãe">Mãe</option>
+            <option value="Tio(a)">Tio(a)</option>
+            <option value="Filho(a)">Filho(a)</option>
+            <option value="Amigo(a)">Amigo(a)</option>
+            <option value="Irmã(o)">Irmã(o)</option>
+            <option value="Avós">Avós</option>
+            <option value="Outros">Outros</option>
+
+          </select>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" id="criBtnSalvar" class="btn btn-primary" data-bs-dismiss="modal">Salvar</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <script src="js/fbConfig.js"></script>
+    <script src="js/app.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    
+  </body>
+</html>
